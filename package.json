@@ -1,6 +1,5 @@
 {
 	"version": "1.0.2",
-	"_id": "react-is-online-context@1.0.2",
 	"name": "react-is-online-context",
 	"description": "React context provider and hook to check if the internet connection is up",
 	"main": "dist/cjs/index.js",
@@ -21,12 +20,27 @@
 		"url": "git+https://github.com/lacymorrow/react-is-online-context.git"
 	},
 	"keywords": [
-		"javascript",
-		"typescript",
-		"markdown",
-		"react",
-		"github",
-		"readme"
+		"browser",
+		"online",
+		"offline",
+		"is-online",
+		"network",
+		"connected",
+		"connectivity",
+		"internet",
+		"is",
+		"has",
+		"detect",
+		"hostname",
+		"hostnames",
+		"dns",
+		"socket",
+		"reachable",
+		"reachability",
+		"accessible",
+		"no",
+		"disconnect",
+		"disconnected"
 	],
 	"author": {
 		"name": "Lacy Morrow",
