@@ -1,47 +1,92 @@
 import { type Meta, type StoryFn } from "@storybook/react";
+
 import React from "react";
+import {
+	IsOnlineContext as Context,
+	IsOnlineContextProvider,
+} from "./is-online-context";
 import { useIsOnline } from "./use-is-online-hook";
 
-export const DefaultComponent = (props: any) => {
-	const { isOnline, isLoading, error } = useIsOnline(props);
+const ComponentValues = (props: any) => {
 	return (
-		<div>
-			<a href="https://github.com/sindresorhus/is-online">
-				See is-online on GitHub for more information.
-			</a>
-			<p>isOnline: {isOnline ? "true" : "false"}</p>
-			<p>isLoading: {isLoading ? "true" : "false"}</p>
-			<p>error: {error && String(error)}</p>
-		</div>
+		<>
+			<div>{JSON.stringify(props, null, 2)}</div>
+			<p>
+				<a href="https://github.com/lacymorrow/react-is-online-context">
+					Why use context over a hook?
+				</a>
+			</p>
+			<p>
+				See{" "}
+				<a href="https://github.com/sindresorhus/is-online">
+					is-online
+				</a>{" "}
+				for more information.
+			</p>
+		</>
+	);
+};
+
+const ComponentUsingHooks = (props: any) => {
+	const { isOnline, isLoading, error } = useIsOnline(props);
+
+	return (
+		<>
+			<ComponentValues
+				isOnline={isOnline}
+				isLoading={isLoading}
+				error={error}
+			/>
+		</>
+	);
+};
+const ComponentUsingContext = () => {
+	const { isOnline, isLoading, error } = React.useContext(Context);
+
+	return (
+		<>
+			<ComponentValues
+				isOnline={isOnline}
+				isLoading={isLoading}
+				error={error}
+			/>
+		</>
+	);
+};
+
+const AppComponent = (props: any) => {
+	return (
+		<IsOnlineContextProvider {...props}>
+			<ComponentUsingContext />
+		</IsOnlineContextProvider>
 	);
 };
 
 // More on Timeout export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
 	title: "lacymorrow/react-is-online-context",
-	component: DefaultComponent,
-} as Meta<typeof DefaultComponent>;
+	component: AppComponent,
+} as Meta<typeof AppComponent>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: StoryFn<typeof DefaultComponent> = (args) => (
-	<DefaultComponent {...args} />
+const Template: StoryFn<typeof AppComponent> = (args: any) => (
+	<AppComponent {...args} />
 );
 
-export const Options = Template.bind({});
+const HookTemplate: StoryFn<typeof AppComponent> = (args: any) => (
+	<ComponentUsingHooks {...args} />
+);
+
+export const IsOnlineContext = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Options.args = {
+IsOnlineContext.args = {
 	timeout: 5000,
 	ipVersion: 4,
 };
 
-export const Timeout = Template.bind({});
+export const useIsOnlineHook = HookTemplate.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Timeout.args = {
+useIsOnlineHook.args = {
 	timeout: 5000,
-};
-
-export const IP_Version = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-IP_Version.args = {
-	ipVersion: 6,
+	ipVersion: 4,
 };

@@ -1,14 +1,14 @@
 # react-is-online-context [<img src="https://github.com/lacymorrow/crossover/raw/master/src/static/meta/patreon-button.webp" style="height:40px;" height="40" align="right" />](https://www.patreon.com/bePatron?u=55065733)
 [![npm version](https://badge.fury.io/js/react-is-online-context.svg)](https://badge.fury.io/js/react-is-online-context) [![Maintainability](https://api.codeclimate.com/v1/badges/182efedf2a8b7f1ac89c/maintainability)](https://codeclimate.com/github/lacymorrow/react-is-online-context/maintainability)
 
-> Uses HTML5 `offline` and `online` events combined with the @Sindresorhus `is-online` package for accurate online/offline detection.
+> Uses HTML5 `offline` and `online` events combined with the @Sindresorhus [`is-online`](https://github.com/sindresorhus/is-online) package for accurate online/offline detection.
 
 [**Storybook Demo**](https://www.chromatic.com/component?appId=6528a9ef83709c394594fc93&csfId=lacymorrow-react-is-online-context&buildNumber=5&k=6528ae3054fd2afdd25fb253-1200px-interactive-true&h=3&b=-1)
 
 ## Features
 
- * Uses `is-online` for accurate online/offline detection. 
- * Works just about everywhere `window` is available, including Node.js and Electron.
+ * Uses [`is-online`](https://github.com/sindresorhus/is-online) for accurate online/offline detection.
+ * Works just about everywhere `window` is available, including Electron.
  * Does not require `navigator.onLine`
  * Works on both the client and server
 
@@ -23,16 +23,78 @@ npm install react-is-online-context
 ## Usage
 
 ```js
-import { GitHubReadme } from 'react-is-online-context'
+import { IsOnlineContextProvider } from "react-is-online-context";
+import { ComponentUsingContext } from "./ComponentUsingContext";
 
-// ...
 
-;<GitHubReadme username='lacymorrow' repo='react-is-online-context' />
 
-// or
-// <GitHubReadme src="path/to/my/file.md />
+const AppComponent = () => {
+
+	// See is-online for options: https://github.com/sindresorhus/is-online
+	const options = {
+		// timeout: 5000,
+	};
+
+	return (
+		<IsOnlineContextProvider {...options}>
+			<ComponentUsingContext />
+		</IsOnlineContextProvider>
+	);
+};
+
+// ./ComponentUsingContext
+import { IsOnlineContext } from "react-is-online-context";
+
+export const ComponentUsingContext = (props) => {
+	const { isOnline, isLoading, error } = React.useContext(IsOnlineContext);
+
+	return (
+		<div>
+			{isOnline ? "You are online" : "You are offline"}
+		</div>
+	);
+};
 ```
 
+
+### Usage with React Hooks
+
+```js
+import { useIsOnline } from "react-is-online-context";
+
+
+export const ComponentUsingHooks = (props) => {
+	const { isOnline, isLoading, error } = useIsOnline();
+
+	return (
+		<div>
+			{isOnline ? "You are online" : "You are offline"}
+		</div>
+	);
+};
+```
+
+## API
+
+### `IsOnlineContextProvider`
+
+The `IsOnlineContextProvider` component is a React Context Provider that provides the `IsOnlineContext` to all of its children.
+
+### `IsOnlineContext`
+
+The `IsOnlineContext` is a React Context that provides the following values:
+
+ * `isOnline` - A boolean indicating if the user is online or not.
+ * `isLoading` - A boolean indicating if the `isOnline` value is still being determined.
+ * `error` - An error object if there was an error determining the `isOnline` value.
+
+### `useIsOnline` hook
+
+The `useIsOnline` hook provides the same values as the `IsOnlineContext`:
+
+ * `isOnline` - A boolean indicating if the user is online or not.
+ * `isLoading` - A boolean indicating if the `isOnline` value is still being determined.
+ * `error` - An error object if there was an error determining the `isOnline` value.
 
 
 ## FAQ
