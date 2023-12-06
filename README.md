@@ -3,7 +3,7 @@
 
 > Uses HTML5 `offline` and `online` events combined with the @Sindresorhus [`is-online`](https://github.com/sindresorhus/is-online) package for accurate online/offline detection.
 
-[**Storybook Demo**](https://www.chromatic.com/component?appId=6528a9ef83709c394594fc93&csfId=lacymorrow-react-is-online-context&buildNumber=5&k=6528ae3054fd2afdd25fb253-1200px-interactive-true&h=3&b=-1)
+[**Storybook Demo**](https://www.chromatic.com/component?appId=656fd301733d4955d5e63a3a&csfId=lacymorrow-react-is-online-context--use-is-online-hook&buildNumber=1&k=656fd32439eb488a7da22dfc-1200px-interactive-true&h=9&b=0)
 
 ## Features
 
