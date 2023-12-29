@@ -10,6 +10,9 @@ import { useIsOnline } from "./use-is-online-hook";
 const ComponentValues = (props: any) => {
 	return (
 		<>
+			<h1>
+				Connect/Disconnect from internet to see the values update.
+			</h1>
 			<div>{JSON.stringify(props, null, 2)}</div>
 			<p>
 				<a href="https://github.com/lacymorrow/react-is-online-context">
