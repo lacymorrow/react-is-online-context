@@ -21,8 +21,8 @@
 
 ## Features
 
-- **Context provider** — initialized once, shared across the tree (no duplicated polls)
-- **`useIsOnline` hook** — call from any component, same data
+- **Context provider** — polls once, broadcasts via React Context to every consumer in the tree
+- **`useIsOnline` hook** — call it standalone or read the shared context value with `useContext(IsOnlineContext)`
 - Built on [`is-online`](https://github.com/sindresorhus/is-online) for accuracy
 - Listens to HTML5 `online` / `offline` events for instant updates
 - Works in **Electron**, **Next.js** (client + server), and the browser
@@ -84,7 +84,14 @@ const StatusBar = () => {
 
 ### `<IsOnlineContextProvider />`
 
-Wraps your tree and supplies `IsOnlineContext`. Accepts any [`is-online` options](https://github.com/sindresorhus/is-online#options) — they're forwarded directly.
+Wraps your tree and supplies `IsOnlineContext`. Accepts the following [`is-online` options](https://github.com/sindresorhus/is-online#options):
+
+| Prop | Type | Description |
+|---|---|---|
+| `timeout` | `number` | Milliseconds to wait for each check before giving up |
+| `ipVersion` | `4 \| 6` | Force a specific IP version |
+
+Need other `is-online` options forwarded? Open an issue.
 
 ### `IsOnlineContext`
 
@@ -98,14 +105,14 @@ A React context whose value is:
 
 ### `useIsOnline()` hook
 
-Returns the same `{ isOnline, isLoading, error }` shape. Must be called inside an `<IsOnlineContextProvider />`.
+Returns the same `{ isOnline, isLoading, error }` shape. Works standalone — it doesn't require the provider — but **each call starts its own polling loop.** If you have more than one consumer, wrap them in `<IsOnlineContextProvider />` and read the shared value via `useContext(IsOnlineContext)` to avoid duplicate network traffic.
 
 ## FAQ
 
 <details>
-<summary><strong>Why a context instead of just a hook?</strong></summary>
+<summary><strong>Why use the context vs. calling the hook directly?</strong></summary>
 
-A hook is re-initialized in every component that uses it. Three components → three independent polling loops. The context initializes once and broadcasts the result to every consumer. Cleaner network behavior and consistent state.
+The hook is self-contained — it polls and tracks online state on its own. That's fine for a single consumer. But if multiple components each call `useIsOnline()`, you get *independent* polling loops (three components → three sets of network checks). Wrapping the tree in `<IsOnlineContextProvider />` polls once and broadcasts the value to every consumer via context. Same data, less network noise.
 </details>
 
 <details>

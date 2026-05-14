@@ -7,11 +7,13 @@
 ## How to test
 
 ```bash
-npm test
+npm install --ignore-scripts
+npm run rollup     # builds dist/cjs, dist/esm, dist/index.d.ts
+npm run storybook  # interactive testing on :6006
 ```
 
 ## Checklist
 
-- [ ] `npm test` passes locally
-- [ ] Updated the README if a public option changed
+- [ ] `npm run rollup` builds without error
+- [ ] Updated the README if a public prop changed
 - [ ] PR is focused (one logical change)

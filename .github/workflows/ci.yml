@@ -24,7 +24,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-          cache: npm
 
       # node-sass is deprecated and the rollup config uses an older `assert`
       # import that breaks on modern Node. Install dev deps with
