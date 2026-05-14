@@ -127,6 +127,27 @@ The hook is self-contained — it polls and tracks online state on its own. That
 Yes. The provider gracefully no-ops on the server (no `window`), and the first client render kicks off the actual check.
 </details>
 
+## Comparison
+
+| | react-is-online-context | [`react-detect-offline`](https://github.com/chrisbolin/react-detect-offline) | [`use-network-state`](https://github.com/streamich/react-use#sensors) | [`navigator.onLine`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorOnLine/onLine) |
+|---|:-:|:-:|:-:|:-:|
+| Real internet check (not just NIC) | ✅ ([is-online](https://github.com/sindresorhus/is-online)) | ✅ (polls a URL) | ❌ (uses `navigator.onLine`) | ❌ |
+| Lies about captive portals | ❌ | ❌ | ✅ | ✅ |
+| **Shared context** (poll once, broadcast to N consumers) | ✅ | ❌ (per-component) | ❌ | n/a |
+| Hook **and** Context | ✅ | render-prop only | hook only | n/a |
+| TypeScript types | ✅ | partial | ✅ | ✅ |
+| SSR-safe | ✅ | ✅ | ✅ | needs guards |
+| Bundle size (min+gz) | ~3 KB + `is-online` | ~2 KB | ~1 KB | 0 KB |
+| Last release | recent | 2021 | actively maintained | — |
+
+**TL;DR** — use **this** when you have multiple components that need the same online state (the context avoids duplicated polls) and you want actual internet reachability. Use **`react-detect-offline`** if you prefer a render-prop API and want zero context plumbing. Use the **`useNetworkState` hook from `react-use`** if `navigator.onLine` is good enough for your case (it usually isn't).
+
+## Playground
+
+➔ **[Open in StackBlitz](https://stackblitz.com/github/lacymorrow/react-is-online-context/tree/main/examples/stackblitz?file=src/Status.tsx)** — a minimal Vite + React + TS demo of the provider + `useContext` consumer.
+
+Local copy: [`examples/stackblitz/`](./examples/stackblitz)
+
 ## Related
 
 - [`is-online`](https://github.com/sindresorhus/is-online) — the underlying detection library.
