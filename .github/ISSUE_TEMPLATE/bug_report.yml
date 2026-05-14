@@ -1,0 +1,54 @@
+name: Bug report
+description: react-is-online-context didn't detect online/offline state correctly
+labels: ["bug"]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: react-is-online-context version
+      placeholder: "1.0.2"
+    validations:
+      required: true
+
+  - type: input
+    id: react
+    attributes:
+      label: React version
+      placeholder: "18.2.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: env
+    attributes:
+      label: Environment
+      options:
+        - Browser (Chrome / Safari / Firefox / Edge)
+        - Electron
+        - Next.js (client)
+        - Next.js (server)
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: What actually happened?
+      description: Include `{ isOnline, isLoading, error }` values if relevant.
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: A CodeSandbox / StackBlitz link or a small snippet.

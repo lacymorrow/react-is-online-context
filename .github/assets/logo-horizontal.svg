@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1278 200" fill="none">
+  <title>react-is-online-context</title>
+  <g transform="translate(20, 20)">
+    <rect x="0" y="0" width="160" height="160" rx="34" fill="#14b8a6"/>
+    <g fill="none" stroke="#ffffff" stroke-width="11" stroke-linecap="round">
+      <path d="M55 98 Q80 75 105 98"/>
+      <path d="M40 78 Q80 36 120 78"/>
+      <path d="M28 60 Q80 4 132 60"/>
+    </g>
+    <circle cx="80" cy="116" r="7" fill="#ffffff"/>
+  </g>
+  <text
+    x="210"
+    y="132"
+    font-family="ui-sans-serif, system-ui, -apple-system, 'Inter', 'Segoe UI', Roboto, sans-serif"
+    font-size="120"
+    font-weight="800"
+    letter-spacing="-6"
+    fill="#1a0b1f"
+  >react-is-online-context</text>
+</svg>

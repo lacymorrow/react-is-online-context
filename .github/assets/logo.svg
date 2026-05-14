@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none">
+  <title>react-is-online-context</title>
+  <!-- Rounded square — teal (network/online) -->
+  <rect x="16" y="16" width="224" height="224" rx="48" fill="#14b8a6"/>
+  <!-- Wifi-style signal arcs radiating from bottom-center -->
+  <g fill="none" stroke="#ffffff" stroke-width="18" stroke-linecap="round">
+    <!-- inner arc (small) -->
+    <path d="M104 156 Q128 132 152 156"/>
+    <!-- middle arc -->
+    <path d="M84 132 Q128 88 172 132"/>
+    <!-- outer arc -->
+    <path d="M64 108 Q128 44 192 108"/>
+  </g>
+  <!-- dot at bottom -->
+  <circle cx="128" cy="186" r="11" fill="#ffffff"/>
+</svg>
