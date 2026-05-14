@@ -1,0 +1,16 @@
+name: Feature request
+description: Suggest an enhancement to the context, hook, or behavior
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem are you trying to solve?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Your proposed change
+      description: A sketch of the API, code snippet, or behavior change.

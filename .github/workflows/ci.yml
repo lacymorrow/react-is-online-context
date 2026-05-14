@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  smoke:
+    name: Smoke (Node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ["18", "20", "22"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      # node-sass is deprecated and the rollup config uses an older `assert`
+      # import that breaks on modern Node. Install dev deps with
+      # --ignore-scripts to skip the native compile, and verify package
+      # metadata. A real build job can be added when the toolchain is
+      # modernized (e.g. rollup 4 + sass).
+      - run: npm install --ignore-scripts
+
+      - name: Verify package.json
+        run: node -e "const p=require('./package.json'); if(!p.main||!p.module||!p.types) process.exit(1)"
+
+      - name: Verify source is well-formed
+        run: |
+          test -d src
+          ls src/

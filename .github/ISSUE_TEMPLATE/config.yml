@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Discussions
+    url: https://github.com/lacymorrow/react-is-online-context/discussions
+    about: Ask questions or share patterns.
+  - name: Storybook
+    url: https://www.chromatic.com/component?appId=656fd301733d4955d5e63a3a&csfId=lacymorrow-react-is-online-context--use-is-online-hook
+    about: Live interactive demo.
