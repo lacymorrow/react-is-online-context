@@ -81,7 +81,7 @@ const StatusBar = () => {
 ```
 
 > [!TIP]
-> Live, interactive demo on [Chromatic / Storybook](https://www.chromatic.com/component?appId=656fd301733d4955d5e63a3a&csfId=lacymorrow-react-is-online-context--use-is-online-hook).
+> Live, interactive demo on [Chromatic / Storybook](https://main--656fd301733d4955d5e63a3a.chromatic.com).
 
 ## API
 
