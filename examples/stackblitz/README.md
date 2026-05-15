@@ -4,7 +4,7 @@ A minimal Vite + React + TypeScript app that wraps the tree in `<IsOnlineContext
 
 ## Open it live
 
-➔ **[Open in StackBlitz](https://stackblitz.com/github/lacymorrow/react-is-online-context/tree/main/examples/stackblitz?file=src/Status.tsx)**
+➔ **[Open in StackBlitz](https://stackblitz.com/github/lacymorrow/react-is-online-context/tree/main/examples/stackblitz)**
 
 ## Run locally
 
