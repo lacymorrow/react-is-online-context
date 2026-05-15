@@ -1,6 +1,9 @@
 <div align="center">
   <a href="https://github.com/lacymorrow/react-is-online-context">
-    <img src=".github/assets/logo-horizontal.svg" alt="react-is-online-context" width="420">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset=".github/assets/logo-horizontal-dark.svg">
+      <img src=".github/assets/logo-horizontal.svg" alt="react-is-online-context" width="420">
+    </picture>
   </a>
 
   <p><strong>Reliable online/offline detection for React</strong> ➔ context provider + hook, powered by <a href="https://github.com/sindresorhus/is-online"><code>is-online</code></a>.</p>
