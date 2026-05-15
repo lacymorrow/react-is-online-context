@@ -6,7 +6,8 @@ import dts from "rollup-plugin-dts";
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from "rollup-plugin-postcss";
 
-import packageJson from "./package.json" assert { type: "json" };
+import { createRequire } from "node:module";
+const packageJson = createRequire(import.meta.url)("./package.json");
 
 export default [
   {
@@ -27,7 +28,7 @@ export default [
 		peerDepsExternal(),
     	resolve(),
     	commonjs(),
-    	typescript({ tsconfig: "./tsconfig.json" }),
+    	typescript({ tsconfig: "./tsconfig.json", declaration: true, declarationDir: "dist/types" }),
 		postcss(),
 		terser(),
     ],

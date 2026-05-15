@@ -25,12 +25,10 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      # node-sass is deprecated and the rollup config uses an older `assert`
-      # import that breaks on modern Node. Install dev deps with
-      # --ignore-scripts to skip the native compile, and verify package
-      # metadata. A real build job can be added when the toolchain is
-      # modernized (e.g. rollup 4 + sass).
-      - run: npm install --ignore-scripts
+      - run: npm install
+
+      - name: Build
+        run: npm run rollup
 
       - name: Verify package.json
         run: node -e "const p=require('./package.json'); if(!p.main||!p.module||!p.types) process.exit(1)"
