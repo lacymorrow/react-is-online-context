@@ -110,13 +110,10 @@
 		// Added
 		"jsx": "react",
 		"module": "ESNext",
-		"declaration": true,
-		"declarationDir": "dist/types",
 		"sourceMap": true,
 		"outDir": "dist",
 		"moduleResolution": "node",
-		"allowSyntheticDefaultImports": true,
-		"emitDeclarationOnly": true
+		"allowSyntheticDefaultImports": true
 	},
 	"include": ["src"],
 	"exclude": ["node_modules", "dist", "examples"]
