@@ -147,7 +147,7 @@ Yes. The provider gracefully no-ops on the server (no `window`), and the first c
 
 ## Playground
 
-➔ **[Open in StackBlitz](https://stackblitz.com/github/lacymorrow/react-is-online-context/tree/main/examples/stackblitz?file=src/Status.tsx)** — a minimal Vite + React + TS demo of the provider + `useContext` consumer.
+➔ **[Open in StackBlitz](https://stackblitz.com/github/lacymorrow/react-is-online-context/tree/main/examples/stackblitz)** — a minimal Vite + React + TS demo of the provider + `useContext` consumer.
 
 Local copy: [`examples/stackblitz/`](./examples/stackblitz)
 
