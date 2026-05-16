@@ -6,20 +6,19 @@ import dts from "rollup-plugin-dts";
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from "rollup-plugin-postcss";
 
-import { createRequire } from "node:module";
-const packageJson = createRequire(import.meta.url)("./package.json");
-
 export default [
   {
     input: "src/index.ts",
     output: [
       {
-        file: packageJson.main,
+        dir: "dist",
+        entryFileNames: "cjs/index.js",
         format: "cjs",
         sourcemap: true,
       },
       {
-        file: packageJson.module,
+        dir: "dist",
+        entryFileNames: "esm/index.js",
         format: "esm",
         sourcemap: true,
       },
@@ -34,7 +33,7 @@ export default [
     ],
   },
   {
-    input: "dist/esm/types/index.d.ts",
+    input: "dist/types/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts()],
     external: [/\.s?css$/],
