@@ -79,7 +79,7 @@
     "rollup-plugin-postcss": "^4.0.2",
     "sass": "^1.69.4",
     "sass-loader": "^13.3.2",
-    "storybook": "^7.4.5",
+    "storybook": "^10.4.0",
     "tslib": "^2.6.2",
     "typescript": "^5.2.2"
   },
