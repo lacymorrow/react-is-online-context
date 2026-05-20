@@ -1,5 +1,5 @@
 {
-  "version": "1.0.4",
+  "version": "1.0.5",
   "name": "react-is-online-context",
   "description": "React context provider and hook to check if the internet connection is up",
   "main": "dist/cjs/index.js",
