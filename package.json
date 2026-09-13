@@ -72,7 +72,7 @@
     "is-online": "12",
     "node-sass": "^9.0.0",
     "react": "18",
-    "react-dom": "18",
+    "react-dom": "19",
     "rollup": "^4.60.4",
     "rollup-plugin-dts": "^6.0.2",
     "rollup-plugin-peer-deps-external": "^2.2.4",
@@ -86,7 +86,7 @@
   "peerDependencies": {
     "is-online": "12",
     "react": "18",
-    "react-dom": "18"
+    "react-dom": "19"
   },
   "dependencies": {
     "is-online": "12"
